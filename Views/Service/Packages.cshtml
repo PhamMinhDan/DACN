@@ -1,0 +1,113 @@
+﻿@model List<QLTT.ModelFromDB.GoiDichVu>
+
+@{
+    ViewBag.Title = "Gói dịch vụ chưa mua";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="packages-container">
+    <h2>Gói dịch vụ chưa mua</h2>
+    <p><a href="/Transaction/Deposit" class="btn-primary">Nạp tiền</a></p>
+    <table class="packages-table">
+        <thead>
+            <tr>
+                <th>Tên Gói</th>
+                <th>Mô Tả</th>
+                <th>Giá</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var package in Model)
+            {
+                <tr>
+                    <td>@package.TenGoi</td>
+                    <td>@package.MoTa</td>
+                    <td>@package.Gia.ToString("#,##0 vnđ", System.Globalization.CultureInfo.InvariantCulture)</td>
+                    <td>
+                        <form method="post" action="/Service/BuyPackage">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="packageId" value="@package.MaGoiDichVu" />
+                            <button class="btn btn-success" type="submit">Mua bằng số dư</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Count == 0)
+    {
+        <p>Bạn đã mua tất cả các gói dịch vụ. <a href="/Service/Packages/All" class="btn-primary">Xem tất cả gói</a></p>
+    }
+    else
+    {
+        <p><a href="/Service/Packages/All" class="btn-primary">Xem tất cả gói dịch vụ</a></p>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <p class="text-danger">@TempData["Error"]</p>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <p class="text-success">@TempData["Success"]</p>
+    }
+</div>
+
+<style>
+    .packages-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .packages-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .packages-table th,
+        .packages-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .packages-table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        .packages-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+    .btn-success {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+</style>

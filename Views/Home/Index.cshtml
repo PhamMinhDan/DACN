@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <!-- Banner chính -->
+    <section class="hero">
+        <h1>Bắt đầu ngay</h1>
+        <a href="/Account/Login" class="btn-primary">Bắt đầu ngay</a>
+    </section>
+
+    <!-- Gói dịch vụ -->
+    <section class="pricing">
+        <div class="package basic">
+            <h3>Gói cơ bản</h3>
+            <p>Miễn phí</p>
+            <a href="/Account/Register" class="btn-register">Đăng ký</a>
+        </div>
+
+        <div class="package advanced">
+            <h3>Gói nâng cao</h3>
+            <p>199k/tháng</p>
+            <a href="/Account/Register" class="btn-register">Đăng ký</a>
+        </div>
+
+        <div class="package business">
+            <h3>Gói doanh nghiệp</h3>
+            <p>499k/tháng</p>
+            <a href="/Account/Register" class="btn-register">Đăng ký</a>
+        </div>
+    </section>
+</main>

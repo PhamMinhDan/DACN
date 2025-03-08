@@ -1,0 +1,346 @@
+﻿/* Reset chung */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #a8c0ff, #fbc2eb);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+    .nav ul li {
+        display: inline;
+    }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 8px 15px;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+            .nav ul li a:hover {
+                background: #fbc2eb;
+                color: white;
+            }
+
+/* Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn, .btn-login, .btn-register, .btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login, .btn-register {
+    background-color: blue;
+    color: white;
+}
+
+    .btn-login:hover, .btn-register:hover {
+        background-color: darkblue;
+    }
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #45a049;
+    }
+
+/* Nội dung chính */
+.container {
+    flex: 1; /* Giúp nội dung đẩy footer xuống */
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Footer luôn ở cuối */
+.footer {
+    background: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* 🔹 Form đăng nhập */
+.login-container, .register-container {
+    width: 350px;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 50px;
+}
+
+    .login-container img, .register-container img {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .login-container input, .register-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+        .login-container input:focus, .register-container input:focus {
+            border-color: blue;
+            outline: none;
+        }
+
+    .login-container button, .register-container button {
+        width: 100%;
+        padding: 10px;
+        background: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .login-container button:hover, .register-container button:hover {
+            background: darkblue;
+        }
+
+.forgot-password, .login-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+    .forgot-password:hover, .login-link:hover {
+        text-decoration: underline;
+    }
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .hero h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+/* Pricing Section */
+.pricing {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Thiết kế chung cho các gói dịch vụ */
+.package {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+}
+
+/* Màu nền gradient cho từng gói */
+.basic {
+    background: linear-gradient(to right, #56CCF2, #2F80ED);
+}
+
+.advanced {
+    background: linear-gradient(to right, #FF9A8B, #FF6A88, #FF99AC);
+}
+
+.business {
+    background: linear-gradient(to right, #667EEA, #764BA2);
+}
+
+.package h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.package p {
+    font-size: 16px;
+}
+
+/* Hiệu ứng khi hover */
+.package:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Nút Đăng ký trong Pricing */
+.pricing .btn-register {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .pricing .btn-register:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+/* Khu vực chính cho người dùng đã đăng nhập */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 120px); /* Điều chỉnh cho chiều cao của header và footer */
+}
+
+/* Thanh bên cho người dùng đã đăng nhập */
+.sidebar {
+    width: 250px;
+    background-color: #34495e;
+    color: white;
+    padding: 1rem;
+}
+
+    .sidebar ul {
+        list-style: none;
+    }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+            .sidebar ul li a:hover {
+                background-color: #465c71;
+            }
+
+/* Khu vực nội dung cho người dùng đã đăng nhập */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* Gói dịch vụ trong trang đã đăng nhập */
+.package-list {
+    display: grid;
+    gap: 20px;
+}
+
+.package-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.packages-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.package-count {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+    .package-count span {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .pricing {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .package {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .login-container, .register-container {
+        width: 90%;
+        margin-top: 20px;
+    }
+}

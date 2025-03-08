@@ -1,0 +1,68 @@
+﻿@model QLTT.Models.LoginViewModel
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="login-container">
+    <h2>Đăng nhập</h2>
+    <form method="post" action="/Account/Login">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Username, new { @placeholder = "Nhập số di động hoặc email", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(m => m.Password, new { @placeholder = "Nhập mật khẩu", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <button type="submit" class="btn-primary">Đăng nhập</button>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </form>
+    <a href="/Account/ForgotPassword" class="forgot-password">Quên mật khẩu?</a>
+</div>
+
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .forgot-password {
+        display: block;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+</style>

@@ -1,0 +1,45 @@
+﻿@model QLTT.ModelFromDB.NguoiDung
+
+@{
+    ViewBag.Title = "Xóa thành viên khỏi gói";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="package-users-container">
+    <h2>Xóa thành viên khỏi gói</h2>
+    <p>Bạn có chắc chắn muốn xóa <strong>@Model.HoTen</strong> khỏi gói dịch vụ?</p>
+    <form asp-action="DeleteFromPackage" method="post">
+        <input type="hidden" name="userId" value="@Model.MaNguoiDung" />
+        <input type="hidden" name="packageId" value="@ViewBag.PackageId" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="ManageUsers" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+<style>
+    .package-users-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 8px 16px;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>

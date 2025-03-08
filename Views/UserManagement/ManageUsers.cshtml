@@ -1,0 +1,138 @@
+﻿@model IEnumerable<QLTT.ModelFromDB.NguoiDung>
+
+@{
+    ViewBag.Title = "Quản lý thành viên";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="package-users-container">
+    <h2>Quản lý thành viên</h2>
+    @if (TempData["Error"] != null)
+    {
+        <p class="text-danger">@TempData["Error"]</p>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <p class="text-success">@TempData["Success"]</p>
+    }
+
+    <!-- Form tìm kiếm -->
+    <form asp-action="ManageUsers" method="get" class="search-form">
+        <div class="form-group">
+            <label>Tìm kiếm thành viên (Họ tên, Email, Số điện thoại):</label>
+            <input type="text" name="searchString" class="form-control" value="@ViewBag.SearchString" placeholder="Nhập từ khóa" />
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    </form>
+
+    <!-- Bảng danh sách thành viên -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Vai trò</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.HoTen</td>
+                    <td>@user.Email</td>
+                    <td>@user.SoDienThoai</td>
+                    <td>@user.VaiTro</td>
+                    <td>
+                        <a asp-action="DeleteFromPackage" asp-route-userId="@user.MaNguoiDung" asp-route-packageId="@(ViewBag.PackageId ?? 0)" class="btn btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="AddToPackage" class="btn btn-secondary">Thêm thành viên</a>
+</div>
+
+<style>
+    .package-users-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 70%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-right: 10px;
+    }
+
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .text-success {
+        color: #28a745;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+</style>
