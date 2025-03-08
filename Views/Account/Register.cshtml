@@ -1,0 +1,37 @@
+﻿@model QLTT.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="register-container">
+    <div class="register-box">
+        <h2>Đăng ký</h2>
+        <form method="post" action="/Account/Register">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="HoTen">Họ và tên</label>
+                @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", @placeholder = "Nhập họ và tên", @required = "required" })
+                @Html.ValidationMessageFor(m => m.HoTen)
+            </div>
+            <div class="form-group">
+                <label for="EmailOrPhone">Số di động hoặc email</label>
+                @Html.TextBoxFor(m => m.EmailOrPhone, new { @class = "form-control", @placeholder = "Nhập số di động hoặc email", @required = "required" })
+                @Html.ValidationMessageFor(m => m.EmailOrPhone)
+            </div>
+            <div class="form-group">
+                <label for="Password">Mật khẩu</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Nhập mật khẩu", @required = "required" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="form-group">
+                <label for="ConfirmPassword">Xác nhận mật khẩu</label>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu", @required = "required" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+            <button type="submit" class="btn-primary">Đăng ký</button>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </form>
+        <p class="login-link">Bạn đã có tài khoản? <a href="/Account/Login">Đăng nhập</a></p>
+    </div>
+</div>

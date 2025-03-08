@@ -1,0 +1,143 @@
+﻿@model List<QLTT.ModelFromDB.HoaDonDienTu>
+
+@{
+    ViewBag.Title = "Lịch sử giao dịch";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="transactions-container">
+    <h2>Lịch sử giao dịch</h2>
+    @if (Model == null || !Model.Any())
+    {
+        <p>Không có giao dịch nào trong lịch sử. <a href="/Transaction/Deposit" class="btn-primary">Nạp tiền ngay</a></p>
+    }
+    else
+    {
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Mã Hóa Đơn</th>
+                    <th>Mã Giao Dịch</th>
+                    <th>Loại Giao Dịch</th>
+                    <th>Trạng Thái Giao Dịch</th>
+                    <th>Ngày Tạo</th>
+                    <th>Tổng Tiền</th>
+                    <th>Trạng Thái Hóa Đơn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoice in Model)
+                {
+                    <tr>
+                        <td>@invoice.MaHoaDon</td>
+                        <td>@invoice.MaGiaoDich</td>
+                        <td>
+                            @if (invoice.MaGiaoDichNavigation != null)
+                            {
+                                @(invoice.MaGiaoDichNavigation.LoaiGiaoDich switch
+                                {
+                                    "NapTien" => "Nạp tiền",
+                                    "MuaGoi" => "Mua gói",
+                                    "HoanTien" => "Hoàn tiền",
+                                    _ => "Không xác định"
+                                })
+                            }
+                            else
+                            {
+                                @: "Dữ liệu không khả dụng"
+                            }
+                        </td>
+                        <td>
+                            @if (invoice.MaGiaoDichNavigation != null)
+                            {
+                                @(invoice.MaGiaoDichNavigation.TrangThai switch
+                                {
+                                    "ChoXuLy" => "Chờ xử lý",
+                                    "ThanhCong" => "Thành công",
+                                    "ThatBai" => "Thất bại",
+                                    _ => "Không xác định"
+                                })
+                            }
+                            else
+                            {
+                                @: "Dữ liệu không khả dụng"
+                            }
+                        </td>
+                        <td>@invoice.NgayTao?.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        <td>@invoice.TongTien.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>
+                            @(invoice.TrangThai switch
+                            {
+                                "Chuathanhtoan" => "Chưa thanh toán",
+                                "Dathanhtoan" => "Đã thanh toán",
+                                "Huy" => "Hủy",
+                                _ => "Không xác định"
+                            })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<!-- CSS giữ nguyên như tài liệu bạn cung cấp -->
+<style>
+    .transactions-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .transactions-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .transactions-table th,
+        .transactions-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transactions-table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        .transactions-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+    media (max-width: 768px) {
+        .transactions-table
+
+    {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+        min-width: 150px;
+    }
+
+    }
+</style>

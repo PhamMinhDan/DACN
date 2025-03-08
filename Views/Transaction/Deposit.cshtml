@@ -1,0 +1,30 @@
+﻿@model decimal?
+
+@{
+    ViewBag.Title = "Nạp tiền";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="deposit-container">
+    <h2>Nạp tiền</h2>
+    <form method="post" action="/Transaction/Deposit">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label for="amount">Số tiền nạp (VND):</label>
+            <input type="number" name="amount" id="amount" class="form-control" min="1" step="0.01" required placeholder="Nhập số tiền" />
+            @if (TempData["Error"] != null)
+            {
+                <p class="text-danger">@TempData["Error"]</p>
+            }
+            @if (TempData["Success"] != null)
+            {
+                <p class="text-success">@TempData["Success"]</p>
+            }
+        </div>
+        <button type="submit" class="btn-primary">Nạp tiền</button>
+        <p><a href="/Service/Packages" class="btn-primary">Quay lại danh sách gói</a></p>
+    </form>
+    <p><a href="/Transaction/History" class="btn-primary">Xem lịch sử giao dịch</a></p>
+</div>
+
+<!-- CSS giữ nguyên như tài liệu bạn cung cấp -->

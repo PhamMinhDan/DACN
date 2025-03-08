@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Thêm thành viên";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="add-user-container">
+    <h2>Thêm thành viên vào gói dịch vụ</h2>
+    @if (TempData["Error"] != null)
+    {
+        <p class="text-danger">@TempData["Error"]</p>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <p class="text-success">@TempData["Success"]</p>
+    }
+
+    <!-- Form tìm kiếm người dùng -->
+    <form asp-action="SearchUser" method="post" class="search-form">
+        <div class="form-group">
+            <label>Tìm kiếm người dùng (Email hoặc Số điện thoại):</label>
+            <input type="text" name="searchQuery" class="form-control" placeholder="Nhập Email hoặc Số điện thoại" />
+            <button type="submit" class="btn btn-primary">Tìm và Thêm</button>
+        </div>
+    </form>
+
+    <a asp-action="ManageUsers" class="btn btn-secondary">Quay lại</a>
+</div>
+
+<style>
+    .add-user-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 70%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-right: 10px;
+    }
+
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .text-success {
+        color: #28a745;
+    }
+</style>

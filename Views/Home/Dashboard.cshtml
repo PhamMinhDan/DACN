@@ -1,0 +1,60 @@
+﻿@model List<QLTT.ModelFromDB.DanhSachThanhVien>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="dashboard-container">
+    <h2>Chào mừng, @ViewBag.UserName!</h2>
+    @if (Model != null && Model.Any())
+    {
+        <h3>Các gói dịch vụ của bạn</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên gói</th>
+                    <th>Ngày tham gia</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var package in Model)
+                {
+                    <tr>
+                        <td>@package.MaGoiDichVuNavigation.TenGoi</td>
+                        <td>@(package.NgayTao.HasValue ? package.NgayTao.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Bạn chưa tham gia gói dịch vụ nào. <a asp-action="Packages" asp-controller="Service">Mua gói dịch vụ ngay</a>.</p>
+    }
+</div>
+
+<style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+</style>

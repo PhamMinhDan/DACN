@@ -1,0 +1,28 @@
+﻿@model QLTT.ModelFromDB.NguoiDung
+
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_LayoutAuthenticated.cshtml";
+}
+
+<div class="container">
+    <h2>Thông tin cá nhân</h2>
+    <div class="profile-box">
+        <p><strong>Họ và tên:</strong> @Model.HoTen</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Số điện thoại:</strong> @Model.SoDienThoai</p>
+        <p><strong>Số dư:</strong> @(Model.SoDu?.ToString("C", System.Globalization.CultureInfo.InvariantCulture) ?? "0")</p>
+        <a href="/Account/Logout" class="btn-primary">Đăng xuất</a>
+    </div>
+</div>
+
+<style>
+    .profile-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin: 20px auto;
+    }
+</style>

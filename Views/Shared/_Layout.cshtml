@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Hệ Thống</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- 🔹 Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="/"> <img src="~/images/logo.png" alt="Logo" width="100"> </a>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="/About">Giới Thiệu</a></li>
+                <li><a href="/Services">Dịch Vụ</a></li>
+                <li><a href="/Contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="/Account/Login" class="btn-login">Đăng Nhập</a>
+            <a href="/Account/Register" class="btn-register">Đăng Ký</a>
+        </div>
+    </header>
+
+    <!-- 🔹 Nội dung chính -->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- 🔹 Footer luôn ở cuối -->
+    <footer class="footer">
+        <p>© 2025 Hệ Thống. Bản quyền thuộc về công ty XYZ.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
